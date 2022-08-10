@@ -1,19 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import App from './container/App/App'
 
-function App () {
-  return (
-    <div>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique, assumenda?</p>
-    </div>
-  )
-}
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-    <App />
-);
-
-
-
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+root.render(<App />);
