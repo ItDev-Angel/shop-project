@@ -61,6 +61,7 @@ function App () {
     </div>
   )
 }
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
@@ -68,3 +69,14 @@ root.render(
   <> <App />
   </>
 );
+
+function tick() {
+  const timer = (
+    <div>
+      <h1>Hello, world!</h1>
+      <h2>It is {new Date().toISOString()} PM.</h2>
+    </div>
+  );
+  root.render(timer);
+}
+setInterval(tick, 1000);
