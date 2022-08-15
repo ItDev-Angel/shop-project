@@ -1,17 +1,12 @@
-import {
-  Container,
-  AppBar,
-  Toolbar,
-  IconButton,
-  Typography,
-  Button,
-} from '@mui/material'
+import {Container, AppBar, Toolbar, IconButton, Typography, Button,} 
+from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
-
+import Menu from 'components/Menu/Menu'
+import CardHeader from 'components/CardHeader/CardHeader'
 type Props = {}
 
 const Header = (props: Props) => {
-  return (
+    return (
     <AppBar position="static">
             <Container>
                 <Toolbar>
@@ -31,11 +26,12 @@ const Header = (props: Props) => {
                     >
                         Fake shop
                     </Typography>
-                    <Button color="inherit">Login</Button>
+                        <Menu />
+                        <CardHeader/>
                 </Toolbar>
             </Container>
         </AppBar>
-  )
+    )
 }
 
 export default Header
