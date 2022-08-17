@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Grid, Typography } from '@mui/material'
 import ProductsListItem from './ProductsListItem'
+import productsArray from './productsArray'
+import {PropsProduct} from './ProductsListItem'
 
 type Props = {}
 
@@ -16,33 +19,17 @@ const ProductsList = (props: Props) => {
                 alignItems="center"
                 spacing={3}
             >
-                <Grid item xs={12} sm={6} md={4}>
+                {productsArray.map(({id,image,name,description,capacity,type,price}:PropsProduct) =>(
+                <Grid item xs={12} sm={6} md={4} key={id}>
                     <ProductsListItem
-                        name="iPhone"
-                        description="description iphone"
-                        capacity={64}
-                        type="phone"
-                        price={500}
+                        name={name}
+                        description={description}
+                        capacity={capacity}
+                        type={type}
+                        price={price}
+                        image={image}
                     />
-                </Grid>
-                <Grid item xs={12} sm={6} md={4}>
-                    <ProductsListItem
-                        name="iPhone xs"
-                        description="description iphone xs"
-                        capacity={128}
-                        type="phone"
-                        price={800}
-                    />
-                </Grid>
-                <Grid item xs={12} sm={6} md={4}>
-                    <ProductsListItem
-                        name="iPhone x"
-                        description="description iphone x"
-                        capacity={256}
-                        type="phone"
-                        price={1500}
-                    />
-                </Grid>
+                </Grid>))}
             </Grid>
         </>
     )

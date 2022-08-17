@@ -1,17 +1,23 @@
 import { Button, Card, CardActions, CardContent } from '@mui/material'
 import './ProductsListItem.scss'
-type PropsProduct = {
-  name: string
-  description: string
-  type: string
-  capacity: number
-  price: number
+
+export type PropsProduct = {
+    id?:number
+    name: string
+    description: string
+    type: string
+    capacity: number
+    price: number
+    image: string
 }
 
-const ProductsListItem = ({name, description, type, capacity, price}: PropsProduct) => {
+const ProductsListItem = ({name,image, description, type, capacity, price}: PropsProduct) => {
     return (
         <Card>
             <CardContent>
+                <div className="product-img">
+                    <img src={image} alt="" />
+                </div>
                 <h4 className="product-title">{name}</h4>
                 <div className="product-description">{description}</div>
                 <div className="product-features">{capacity}</div>
