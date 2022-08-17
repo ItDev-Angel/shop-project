@@ -1,4 +1,3 @@
-import React from 'react'
 import { Button, Card, CardActions, CardContent } from '@mui/material'
 import './ProductsListItem.scss'
 type PropsProduct = {
@@ -16,11 +15,11 @@ const ProductsListItem = ({name, description, type, capacity, price}: PropsProdu
                 <h4 className="product-title">{name}</h4>
                 <div className="product-description">{description}</div>
                 <div className="product-features">{capacity}</div>
-                <div className={`product-features red`}>{type}</div>
+                <div className={`product-features`}>{type}</div>
                 <div className="product-price">{price}</div>
             </CardContent>
 
-            <CardActions>
+            <CardActions className="btn-wraper">
                 <Button variant="contained">Add to Cart</Button>
             </CardActions>
         </Card>
