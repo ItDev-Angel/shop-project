@@ -24,10 +24,7 @@ type State = {
 
 class ProductsListItem extends Component <PropsProduct, State> {
     state = { count:100,}
-    constructor (props: PropsProduct) {
-        super(props)
-        this.onDecrementClick = this.onDecrementClick.bind(this)
-    }
+
     onDecrementClick() {
         this.setState((prevState:State) => ({
             count:prevState.count -1,
@@ -47,7 +44,7 @@ class ProductsListItem extends Component <PropsProduct, State> {
                     <div className={`product-features`}>{type}</div>
                     <div className="product-price">{price}</div>
                     <div className="product-quantity">
-                        <Button variant="contained" onClick={this.onDecrementClick}>-</Button>
+                        <Button variant="contained" onClick={()=>this.onDecrementClick()}>-</Button>
                         <TextField size="small" value={this.state.count} variant="outlined" />
                         <Button variant="contained">+</Button>
                     </div>
