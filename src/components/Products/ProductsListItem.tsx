@@ -1,9 +1,15 @@
-import { Button, Card, CardActions, CardContent, TextField } from '@mui/material'
+import React, { Component } from 'react'
+import {
+    Button,
+    Card,
+    CardActions,
+    CardContent,
+    TextField,
+} from '@mui/material'
 import './ProductsListItem.scss'
 
-
 export type PropsProduct = {
-    id?:number
+    id?: number
     name: string
     description: string
     type: string
@@ -12,31 +18,42 @@ export type PropsProduct = {
     image: string
 }
 
-const ProductsListItem = ({name,image, description, type, capacity, price}: PropsProduct) => {
+type State = {
+    count: number
+}
 
-    return (
-        <Card>
-            <CardContent>
-                <div className="product-img">
-                    <img src={image} alt="" />
-                </div>
-                <h4 className="product-title">{name}</h4>
-                <div className="product-description">{description}</div>
-                <div className="product-features">{capacity}</div>
-                <div className={`product-features`}>{type}</div>
-                <div className="product-price">{price}</div>
-                <div className="product-quantity">
-                    <Button variant="contained">-</Button>
-                    <TextField size="small" value={1} variant="outlined"/>
-                    <Button variant="contained">+</Button>
-                </div>
-            </CardContent>
+class ProductsListItem extends Component <PropsProduct, State> {
+    state = { count:100,}
+    // constructor (props: PropsProduct) {
+    //     super(props)
+    //     this.state = {count:1}
+    // }
+    render() {
+        const {image,name,description,capacity,type,price} = this.props
+        return (
+            <Card>
+                <CardContent>
+                    <div className="product-img">
+                        <img src={image} alt="" />
+                    </div>
+                    <h4 className="product-title">{name}</h4>
+                    <div className="product-description">{description}</div>
+                    <div className="product-features">{capacity}</div>
+                    <div className={`product-features`}>{type}</div>
+                    <div className="product-price">{price}</div>
+                    <div className="product-quantity">
+                        <Button variant="contained">-</Button>
+                        <TextField size="small" value={this.state.count} variant="outlined" />
+                        <Button variant="contained">+</Button>
+                    </div>
+                </CardContent>
 
-            <CardActions className="btn-wraper">
-                <Button variant="contained">Add to Cart</Button>
-            </CardActions>
-        </Card>
-    )
+                <CardActions className="btn-wraper">
+                    <Button variant="contained">Add to Cart</Button>
+                </CardActions>
+            </Card>
+        )
+    }
 }
 
 export default ProductsListItem
