@@ -20,14 +20,21 @@ export type PropsProduct = {
 
 type State = {
     count: number
-    color: string
+    changeColor:boolean
+    
 }
 
 class ProductsListItem extends Component<PropsProduct, State> {
-    state = { count: 1, color: 'green' }
-
+    state = { count: 1, changeColor:false }
+    
+    constructor(props: PropsProduct){
+        super(props)
+        this.state = {changeColor:false, count: 1}
+    }
     changeColor = () => {
-        this.setState({ color: 'red'}) 
+        this.setState(state => ({ 
+            changeColor: !state.changeColor
+        }))
     }
 
     onDecrementClick = () => {
@@ -76,7 +83,7 @@ class ProductsListItem extends Component<PropsProduct, State> {
                             +
                         </Button>
                     </div>
-                    <p>Color:{this.state.color}</p>
+                    <p>Color:{this.state.changeColor ? "red" : "green"}</p>
                     <Button variant="outlined" onClick={this.changeColor}>
                         Change Color
                     </Button>
