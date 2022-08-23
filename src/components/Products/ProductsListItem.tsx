@@ -20,10 +20,15 @@ export type PropsProduct = {
 
 type State = {
     count: number
+    color: string
 }
 
 class ProductsListItem extends Component <PropsProduct, State> {
-    state = { count:100,}
+    state = { count:10, color:"green"}
+
+    changeColor = () => {
+        this.setState({ color:"red"})
+    }
 
     onDecrementClick = () => {
         this.setState((prevState:State) => ({
@@ -55,6 +60,8 @@ class ProductsListItem extends Component <PropsProduct, State> {
                         <TextField size="small" value={this.state.count} variant="outlined" />
                         <Button variant="contained" onClick={this.onIncrementClick}>+</Button>
                     </div>
+                    <p>Color:{this.state.color}</p>
+                    <Button variant="outlined" onClick={this.changeColor}>Change Color</Button>
                 </CardContent>
 
                 <CardActions className="btn-wraper">
