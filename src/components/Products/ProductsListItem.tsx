@@ -23,27 +23,27 @@ type State = {
     color: string
 }
 
-class ProductsListItem extends Component <PropsProduct, State> {
-    state = { count:10, color:"green"}
+class ProductsListItem extends Component<PropsProduct, State> {
+    state = { count: 1, color: 'green' }
 
     changeColor = () => {
-        this.setState({ color:"red"})
+        this.setState({ color: 'red'}) 
     }
 
     onDecrementClick = () => {
-        this.setState((prevState:State) => ({
-            count:prevState.count -1,
+        this.setState((prevState: State) => ({
+            count: prevState.count - 1,
         }))
     }
 
     onIncrementClick = () => {
-        this.setState((prevState:State) => ({
-            count:prevState.count +1,
+        this.setState((prevState: State) => ({
+            count: prevState.count + 1,
         }))
     }
 
     render() {
-        const {image,name,description,capacity,type,price} = this.props
+        const { image, name, description, capacity, type, price } = this.props
         return (
             <Card>
                 <CardContent>
@@ -56,12 +56,30 @@ class ProductsListItem extends Component <PropsProduct, State> {
                     <div className={`product-features`}>{type}</div>
                     <div className="product-price">{price}</div>
                     <div className="product-quantity">
-                        <Button variant="contained" onClick={this.onDecrementClick}>-</Button>
-                        <TextField size="small" value={this.state.count} variant="outlined" />
-                        <Button variant="contained" onClick={this.onIncrementClick}>+</Button>
+                        <Button
+                            variant="contained"
+                            onClick={this.onDecrementClick}
+                            disabled = {this.state.count === 0}
+                        >
+                            -
+                        </Button>
+                        <TextField
+                            size="small"
+                            value={this.state.count}
+                            variant="outlined"
+                        />
+                        <Button
+                            variant="contained"
+                            onClick={this.onIncrementClick}
+                            disabled = {this.state.count === 10}
+                        >
+                            +
+                        </Button>
                     </div>
                     <p>Color:{this.state.color}</p>
-                    <Button variant="outlined" onClick={this.changeColor}>Change Color</Button>
+                    <Button variant="outlined" onClick={this.changeColor}>
+                        Change Color
+                    </Button>
                 </CardContent>
 
                 <CardActions className="btn-wraper">
