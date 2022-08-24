@@ -25,7 +25,7 @@ type State = {
 }
 
 class ProductsListItem extends Component<PropsProduct, State> {
-    state = { count: 1, changeColor:false }
+    // state = { count: 1, changeColor:false }
     
     constructor(props: PropsProduct){
         super(props)
