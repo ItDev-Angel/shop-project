@@ -20,20 +20,17 @@ export type PropsProduct = {
 
 type State = {
     count: number
-    changeColor:boolean
+    color:string
     
 }
 
 class ProductsListItem extends Component<PropsProduct, State> {
-    // state = { count: 1, changeColor:false }
+    state = { count: 1, color:"red" }
     
-    constructor(props: PropsProduct){
-        super(props)
-        this.state = {changeColor:false, count:1}
-    }
-    changeColor = () => {
-        this.setState(state => ({ 
-            changeColor: !state.changeColor
+
+    toogleChangeColor = () => {
+        this.setState((prevState: State) => ({
+            color: prevState.color === 'red' ? 'green' : 'red',
         }))
     }
 
@@ -83,8 +80,8 @@ class ProductsListItem extends Component<PropsProduct, State> {
                             +
                         </Button>
                     </div>
-                    <p>Color:{this.state.changeColor ? "red" : "green"}</p>
-                    <Button variant="outlined" onClick={this.changeColor}>
+                    <p>Color:{this.state.color}</p>
+                    <Button variant="outlined" onClick={this.toogleChangeColor}>
                         Change Color
                     </Button>
                 </CardContent>
