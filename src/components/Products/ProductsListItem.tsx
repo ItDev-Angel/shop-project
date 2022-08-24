@@ -29,7 +29,7 @@ class ProductsListItem extends Component<PropsProduct, State> {
     
     constructor(props: PropsProduct){
         super(props)
-        this.state = {changeColor:false, count: 1}
+        this.state = {changeColor:false, count:1}
     }
     changeColor = () => {
         this.setState(state => ({ 
@@ -66,7 +66,7 @@ class ProductsListItem extends Component<PropsProduct, State> {
                         <Button
                             variant="contained"
                             onClick={this.onDecrementClick}
-                            disabled = {this.state.count === 0}
+                            disabled = {this.state.count === 1}
                         >
                             -
                         </Button>
