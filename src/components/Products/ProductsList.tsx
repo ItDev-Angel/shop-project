@@ -20,7 +20,7 @@ const ProductsList = ({addProductToCart}: Props) => {
     return (
         <>
             <Typography variant="h4" textAlign="center" margin={3}>
-                <div>ProductList</div>
+                <div>Product List</div>
             </Typography>
             <Grid
                 container

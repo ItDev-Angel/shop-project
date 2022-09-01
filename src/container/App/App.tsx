@@ -27,7 +27,10 @@ const App = () => {
         <StyledEngineProvider injectFirst>
             <CssBaseline />
             <Header productsInCart={productsInCart}/>
-            <Main addProductToCart={addProductToCart}/>
+            <Main 
+            addProductToCart={addProductToCart} 
+            productsInCart={productsInCart}
+            />
         </StyledEngineProvider>
             
         

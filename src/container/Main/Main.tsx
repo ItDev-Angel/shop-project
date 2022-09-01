@@ -5,9 +5,10 @@ import CartPage from 'pages/CartPage/CartPage'
 
 type Props = {
   addProductToCart:(id:number, count:number) => void
+  productsInCart:{[id:number]:number}
 }
 
-const Main = ({addProductToCart}: Props) => {
+const Main = ({addProductToCart, productsInCart}: Props) => {
   return (
     <Container>
       <Routes>
@@ -15,7 +16,7 @@ const Main = ({addProductToCart}: Props) => {
           <ProductsList addProductToCart={addProductToCart}/>
         }/>
         <Route path="cart" element={
-          <CartPage/>
+          <CartPage productsInCart={productsInCart}/>
         }/>
       </Routes>
     </Container>

@@ -9,7 +9,7 @@ type Props = {
 
 const Header = ({productsInCart}: Props) => {
     return (
-    <AppBar position="static" sx={{ backgroundColor:'red'}}>
+    <AppBar position="static" sx={{ backgroundColor:'blue'}}>
             <Container>
                 <Toolbar>
                     <IconButton
