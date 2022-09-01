@@ -1,12 +1,25 @@
 import React from 'react'
+import {keys} from 'lodash'
+import productsArray, {getProductsObject, Product} from 'components/Products/productsArray'
+type Props = {
+  productsInCart:{[id:number]:number}
+  productsOoject?:{[id:number]:Product}
+}
 
-type Props = {}
+const CardHeader = ({
+  productsInCart,
+  productsOoject = getProductsObject(productsArray)
+}: Props) => {
 
-const CardHeader = (props: Props) => {
   return (
     <div>
-      <div>0</div>
-      <div>$ 0</div>
+      {keys(productsInCart).map((productId) => (
+        <div key={productId}>
+          {productsOoject[parseInt(productId)].name}:
+          {productsInCart[parseInt(productId)]}
+        </div>
+        ))}
+      
     </div>
   )
 }

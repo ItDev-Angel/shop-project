@@ -1,11 +1,13 @@
 import {Container} from '@mui/material'
 import ProductsList from 'components/Products/ProductsList'
-type Props = {}
+type Props = {
+  addProductToCart:(id:number, count:number) => void
+}
 
-const Main = (props: Props) => {
+const Main = ({addProductToCart}: Props) => {
   return (
     <Container>
-      <ProductsList/>
+      <ProductsList addProductToCart={addProductToCart}/>
     </Container>
   )
 }
