@@ -3,23 +3,30 @@ import {keys} from 'lodash'
 import productsArray, {getProductsObject, Product} from 'components/Products/productsArray'
 type Props = {
   productsInCart:{[id:number]:number}
-  productsOoject?:{[id:number]:Product}
+  productsObject?:{[id:number]:Product}
 }
 
 const CardHeader = ({
   productsInCart,
-  productsOoject = getProductsObject(productsArray)
+  productsObject = getProductsObject(productsArray),
 }: Props) => {
 
   return (
     <div>
       {keys(productsInCart).map((productId) => (
         <div key={productId}>
-          {productsOoject[parseInt(productId)].name}:
+          {productsObject[parseInt(productId)].name}:{''}
           {productsInCart[parseInt(productId)]}
         </div>
         ))}
-      
+      <div>Total $ 
+        {keys(productsInCart).reduce(
+        (total, productId) => 
+        total + 
+        productsObject[parseInt(productId)].price * 
+        productsInCart[parseInt(productId)] ,0)
+        }:{''}
+      </div> 
     </div>
   )
 }
