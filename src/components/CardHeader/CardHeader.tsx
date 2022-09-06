@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {keys} from 'lodash'
 import productsArray, {getProductsObject, Product} from 'components/Products/productsArray'
+import CartTotal from '../Cart/CartTotal'
+import CartProductList from '../Cart/CartProductList'
 type Props = {
   productsInCart:{[id:number]:number}
   productsObject?:{[id:number]:Product}
@@ -11,22 +14,10 @@ const CardHeader = ({
 }: Props) => {
 
   return (
-    <div>
-      {keys(productsInCart).map((productId) => (
-        <div key={productId}>
-          {productsObject[parseInt(productId)].name}:{''}
-          {productsInCart[parseInt(productId)]}
-        </div>
-        ))}
-      <div>Total $ 
-        {keys(productsInCart).reduce(
-        (total, productId) => 
-        total + 
-        productsObject[parseInt(productId)].price * 
-        productsInCart[parseInt(productId)] ,0)
-        }:{''}
-      </div> 
-    </div>
+    <>
+    <CartProductList productsInCart={{}} />  
+    <CartTotal productsInCart={productsInCart}/>
+    </>
   )
 }
 

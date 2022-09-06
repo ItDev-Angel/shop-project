@@ -1,37 +1,28 @@
-import {keys} from 'lodash'
-import productsArray, {getProductsObject, Product} from 'components/Products/productsArray'
-import { Grid, Typography } from '@mui/material'
+import CartTotal from '../../components/Cart/CartTotal'
+import {Grid} from '@mui/material'
+import CartProductList from 'components/Cart/CartProductList'
+import CartProductListItemExtended from 'components/Cart/CartProductListItemExtended'
 
 type Props = {
   productsInCart:{[id:number]:number}
-  productsObject?:{[id:number]:Product}
+  removeProductFromCart:(id:number) => void
 }
 
-const CartPage = ({
-  productsInCart,
-  productsObject = getProductsObject(productsArray),
-}: Props) => {
+const CartPage = ({productsInCart, removeProductFromCart}: Props) => {
 
   return (
-    <div>
-      <Typography variant="h4" textAlign="center" margin={3}>
-                <div>Cart List</div>
-      </Typography>
-      {keys(productsInCart).map((productId) => (
-        <div key={productId}>
-          {productsObject[parseInt(productId)].name}:{''}
-          {productsInCart[parseInt(productId)]}:{''}
-          {productsObject[parseInt(productId)].price}
-        </div>
-        ))}
-      <div>Total $ 
-        {keys(productsInCart).reduce(
-        (total, productId) => 
-        total + 
-        productsObject[parseInt(productId)].price * 
-        productsInCart[parseInt(productId)] ,0)
-        }:{''}
-      </div> 
+    <div 
+    style={{
+      padding:'30px 0',
+    }}>
+      <Grid container spacing={4}>
+        <CartProductList
+        productsInCart={productsInCart}
+        CartItem={CartProductListItemExtended}
+        removeProductFromCart={removeProductFromCart}
+        />
+      </Grid>
+      <CartTotal productsInCart={productsInCart}/>
     </div>
   )
 }

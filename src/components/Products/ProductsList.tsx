@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Grid, Typography } from '@mui/material'
 import ProductsListItem from './ProductsListItem'
 import productsArray from './productsArray'
@@ -10,12 +9,12 @@ type ProductProps = {
     id:number
     name: string
     description: string
-    type: string
+    type:string
     capacity: number
-    price: number
-    image: string
+    price:number
+    image:string
+    category?:string
 }
-
 const ProductsList = ({addProductToCart}: Props) => {
     return (
         <>
@@ -29,28 +28,31 @@ const ProductsList = ({addProductToCart}: Props) => {
                 alignItems="center"
                 spacing={3}
             >
-                {productsArray.map(
-                    ({
+                {productsArray.filter(
+                ({category}:ProductProps) => category === 'Iphone')
+                .map(
+                ({
                     id,
-                    image,
                     name,
                     description,
-                    capacity,
                     type,
-                    price, 
+                    capacity,
+                    price,
+                    image,
                 }:ProductProps) =>(
                 <Grid item xs={12} sm={6} md={4} key={id}>
                     <ProductsListItem
-                        id={id}
-                        name={name}
-                        description={description}
-                        capacity={capacity}
-                        type={type}
-                        price={price}
-                        image={image}
-                        addProductToCart={addProductToCart}
+                            id={id}
+                            name={name}
+                            description={description}
+                            capacity={capacity}
+                            type={type}
+                            price={price}
+                            image={image} 
+                            addProductToCart={addProductToCart} 
                     />
-                </Grid>))}
+                </Grid>
+                ))}
             </Grid>
         </>
     )

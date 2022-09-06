@@ -3,6 +3,15 @@ import React, {useState} from 'react'
 import { Button, Card, CardActions, CardContent, TextField } from '@mui/material'
 import './ProductsListItem.scss'
 
+export type PropsProduct = {
+    id?: number
+    name: string
+    description: string
+    type: string
+    capacity: number
+    price: number
+    image: string
+}
 type ProductProps = {
     id:number
     name: string
@@ -11,10 +20,11 @@ type ProductProps = {
     capacity: number
     price: number
     image: string
+    category?: string
     addProductToCart:(id:number, count:number) => void
 }
 
-const ProductsListItem = ({id, name,image, description, type, capacity, price, addProductToCart}: ProductProps) => {
+const ProductsListItem = ({id, name,image, description, type, capacity, price, addProductToCart, category}: ProductProps) => {
     const [count, setCount] = useState<number>(1)
     const onIncrementClick = () => setCount((prevState:number)=>prevState +1)
     const onDecrementClick = () => setCount((prevState:number)=>prevState -1)
@@ -30,6 +40,7 @@ const ProductsListItem = ({id, name,image, description, type, capacity, price, a
                 <div className="product-features">{capacity}</div>
                 <div className={`product-features`}>{type}</div>
                 <div className="product-price">{price}</div>
+                <div className="product-category">{category}</div>
                 <div className="product-quantity">
                     <Button 
                     variant="contained" 
