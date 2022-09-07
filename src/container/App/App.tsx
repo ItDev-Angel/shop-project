@@ -8,7 +8,6 @@ import {omit} from 'lodash'
 type ProductsInCartProps = {
     [id:number]:number
 }
-
 const App = () => {
     const [productsInCart, setProductsInCart] = 
     useState<ProductsInCartProps>
@@ -28,11 +27,18 @@ const App = () => {
             omit(prevState,[id])
         )
         }
+        const changeProductQuantity = (id:number,count:number) => {
+            setProductsInCart((prevState: ProductsInCartProps) =>({
+                ...prevState,
+                [id]:count,
+            }))
+        }
     return (
         <StyledEngineProvider injectFirst>
             <CssBaseline />
             <Header productsInCart={productsInCart}/>
             <Main 
+            changeProductQuantity={changeProductQuantity}
             addProductToCart={addProductToCart} 
             productsInCart={productsInCart}
             removeProductFromCart={removeProductFromCart}

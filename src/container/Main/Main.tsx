@@ -7,12 +7,14 @@ type Props = {
   addProductToCart:(id:number, count:number) => void
   removeProductFromCart:(id:number) => void
   productsInCart:{[id:number]:number}
+  changeProductQuantity:(id:number, count:number) => void
 }
 
 const Main = ({
   addProductToCart, 
   productsInCart, 
-  removeProductFromCart 
+  removeProductFromCart,
+  changeProductQuantity
 }: Props) => {
   return (
     <> 
@@ -20,12 +22,13 @@ const Main = ({
       <Routes>
         <Route path="/" element={
           <ProductsList 
-          addProductToCart={addProductToCart} />
+              addProductToCart={addProductToCart} />
         }/>
         <Route path="cart" element={
           <CartPage 
           removeProductFromCart={removeProductFromCart}
-          productsInCart={productsInCart}/>
+          productsInCart={productsInCart}
+          changeProductQuantity={changeProductQuantity}/>
         }/>
       </Routes>
     </Container>

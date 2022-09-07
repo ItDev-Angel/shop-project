@@ -14,6 +14,7 @@ type ProductProps = {
     price:number
     image:string
     category?:string
+    
 }
 const ProductsList = ({addProductToCart}: Props) => {
     return (
