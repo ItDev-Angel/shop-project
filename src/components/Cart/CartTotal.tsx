@@ -1,4 +1,3 @@
-import React from 'react'
 import {keys} from 'lodash'
 import productsArray, {getProductsObject, Product} from 'components/Products/productsArray'
 type Props = {
@@ -18,7 +17,7 @@ const CartTotal = ({
         total + 
         productsObject[parseInt(productId)].price * 
         productsInCart[parseInt(productId)] ,0)
-        }:{''}
+        }
       </div> 
     </div>
   )
