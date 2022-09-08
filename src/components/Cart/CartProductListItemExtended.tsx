@@ -4,15 +4,18 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Quantity from '../Quantity/Quantity'
 
 type Props = {
-  id: number
-  addProductToCart:(id:number, count:number) => void
   productCount: number
-  product:Product,
+  product:Product
   removeProductFromCart:(id:number) => void
   changeProductQuantity: (id:number, count:number) => void
 }
 
-const CartProductListItemExtended = ({productCount, product, removeProductFromCart,changeProductQuantity, id, addProductToCart}: Props) => {
+const CartProductListItemExtended = ({
+  productCount, 
+  product, 
+  removeProductFromCart,
+  changeProductQuantity
+}: Props) => {
   return (
     <Grid item xs={12} sm={6}>
       <Card>
@@ -36,12 +39,12 @@ const CartProductListItemExtended = ({productCount, product, removeProductFromCa
                     <p>Count: {productCount}</p>
                     <Quantity
                     count={productCount}
-                    onDecrementClick={()=>
-                      productCount === 1
+                    onDecrementClick={()=> productCount === 1 
                       ? removeProductFromCart(product.id)
                       : changeProductQuantity(product.id, productCount -1)}
-                      onIncrementClick={()=>
-                        changeProductQuantity(product.id, productCount +1)}
+                    onIncrementClick={()=>
+                      changeProductQuantity(product.id, productCount +1)}
+                      minCount={0}
                     />
                     <Button 
                     variant="outlined" 

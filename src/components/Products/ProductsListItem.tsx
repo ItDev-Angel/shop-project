@@ -36,9 +36,9 @@ const ProductsListItem = ({ id, name,image, description, type, capacity, price, 
                 </div>
                 <h4 className="product-title">{name}</h4>
                 <div className="product-description">{description}</div>
-                <div className="product-features">{capacity}</div>
+                <div className="product-features">{capacity} gb</div>
                 <div className={`product-features`}>{type}</div>
-                <div className="product-price">{price}</div>
+                <div className="product-price">${price}</div>
                 <div className="product-category">{category}</div>
                 <Quantity 
                 count={count}

@@ -51,6 +51,7 @@ const ProductsList = ({addProductToCart}: Props) => {
                             price={price}
                             image={image} 
                             addProductToCart={addProductToCart} 
+                            
                     />
                 </Grid>
                 ))}
