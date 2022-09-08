@@ -12,38 +12,41 @@ const Reviews = (props: Props) => {
     {name:'Max', text: 'bchbdhcbdbhcbdhcbdbc'},
   ]
   const [reviews, setReviews] = useState<Review[]>(arrReviews)
-  const [newReviews, setNewReviews] = useState<Review>({
+  const [newReview, setNewReview] = useState<Review>({
     name:'', 
-    text: '',
+    text:'',
   })
-  const handleChangeName = (e:React.ChangeEvent<HTMLInputElement>)=>{
-    setNewReviews((prevState:Review)=>({
+  const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNewReview((prevState:Review) => ({
       ...prevState, 
       name: e.target.value,
     }))
   }
-  const handleChangeText = (e:React.ChangeEvent<HTMLTextAreaElement>)=>{
-    setNewReviews((prevState:Review)=>({
+  const handleChangeText = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setNewReview((prevState:Review) => ({
       ...prevState, 
       text: e.target.value,
     }))
   }
-  const onSend = (e:React.FormEvent<HTMLInputElement>)=>{
+  const onSend = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if(newReviews.name === "" || newReviews.text === ""){
-      alert("Please all fields are required")
-    }else {
-      setReviews((prevState:Review[])=>{
-        return [...prevState, newReviews]
+
+    if (newReview.name === "" || newReview.text === "") {
+      alert ("Please all fields are required")
+    } else {
+      setReviews((prevState:Review[]) => {
+        return [...prevState, newReview]
       })
-      setNewReviews({name:'',text:''})
+      setNewReview({
+        name: '',
+        text: '',
+      })
     }
   }
   return (
     <>
     <h2>Reviews</h2>
-    {
-      reviews.map((review:Review, i:number) =>(
+    {reviews.map((review:Review, i:number) =>(
         <Card
         variant="outlined"
         style={{margin:'20px 0', background:'graylight'}}
@@ -57,28 +60,38 @@ const Reviews = (props: Props) => {
             </Typography>
           </CardContent>
         </Card>
-      ))}
-      {/* <Card>
-        <CardContent>
-          <form onSubmit={onSend()}>
-          <Typography variant="h6">Plase lived preview</Typography>
+      ))
+    }
+    <Card
+      variant="outlined"
+      style={{
+        maxWidth: 400, 
+        justifyContent: 'center',
+        display: 'flex',
+        margin:'20px 0', 
+      }}
+      >
+      <CardContent>
+        <form onSubmit={onSend}>
+          <Typography variant="h6">Please leave a review</Typography>
           <div>
             <TextField size="small" 
-            value={newReviews.name}
+            style={{margin:'20px 0', background:'graylight'}}
+            value={newReview.name}
             onChange={handleChangeName}
             />
-            <br/>
-            <TextareaAutosize minRows={5} 
-            value={newReviews.text}
-            onChange={handleChangeText}/>
           </div>
+            <TextareaAutosize 
+            style={{width:'100%'}}
+            minRows={6} 
+            value={newReview.text}
+            onChange={handleChangeText}/>
           <div>
             <Button variant="outlined" type="submit">Leave review</Button>
           </div>
-          </form>
-        </CardContent>
-      </Card> */}
-      
+        </form>
+      </CardContent>
+    </Card> 
     </>
   )
 }
