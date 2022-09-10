@@ -5,11 +5,12 @@ import CartPage from 'pages/CartPage/CartPage'
 import Reviews from 'components/Reviews/Reviews'
 
 type Props = {
+  productsLikeState:{[id:number]:boolean}
   productsInCart:{[id:number]:number}
   changeProductQuantity:(id:number, count:number) => void
   addProductToCart:(id:number, count:number) => void
   removeProductFromCart:(id:number) => void
-  
+  changeProductLike:(id:number) => void
 }
 
 const Main = ({
@@ -17,6 +18,8 @@ const Main = ({
   productsInCart, 
   removeProductFromCart,
   changeProductQuantity,
+  productsLikeState,
+  changeProductLike,
 }: Props) => {
   return (
     <> 
@@ -25,7 +28,10 @@ const Main = ({
         <Route path="/" element={
           <>
             <ProductsList 
-            addProductToCart={addProductToCart}/>
+            addProductToCart={addProductToCart}
+            productsLikeState={productsLikeState}
+            changeProductLike={changeProductLike}
+            />
             <Reviews/>
           </>
           

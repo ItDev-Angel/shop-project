@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import { useState} from 'react'
 import { Button, Card, CardActions, CardContent } from '@mui/material'
 import './ProductsListItem.scss'
 import Quantity from '../Quantity/Quantity'
@@ -24,6 +24,7 @@ type ProductProps = {
     image: string
     category?: string
     addProductToCart:(id:number, count:number) => void
+    changeProductLike:(id:number) => void
     isLiked?:boolean
 }
 
@@ -38,18 +39,23 @@ const ProductsListItem = ({
     addProductToCart, 
     category,
     isLiked = false,
+    changeProductLike,
 }: ProductProps) => {
     const [count, setCount] = useState<number>(1)
     const onIncrementClick = () => setCount((prevState:number)=>prevState +1)
     const onDecrementClick = () => setCount((prevState:number)=>prevState -1)
+    
     return (
         <Card>
             <CardContent>
                 <div className="product-img">
                     <img src={image} alt="" />
                 </div>
-                <Button variant="outlined">
-                    {isLiked ? <FavoriteIcon/> : <FavoriteBorderIcon/>}
+                <Button 
+                variant="outlined"
+                onClick={()=>changeProductLike(id)} 
+                >
+                {isLiked ? <FavoriteIcon/>:<FavoriteBorderIcon/> || <FavoriteIcon /> }
                 </Button>
                 <h4 className="product-title">{name}</h4>
                 <div className="product-description">{description}</div>
