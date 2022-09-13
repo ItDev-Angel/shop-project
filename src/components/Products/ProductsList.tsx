@@ -20,7 +20,6 @@ type ProductProps = {
 }
 const ProductsList = ({
     addProductToCart, 
-    productsLikeState,
     changeProductLike,
 }: Props) => {
     return (
@@ -57,7 +56,6 @@ const ProductsList = ({
                             price={price}
                             image={image} 
                             addProductToCart={addProductToCart} 
-                            isLiked={productsLikeState[id]}
                             changeProductLike={changeProductLike}
                     />
                 </Grid>

@@ -4,6 +4,8 @@ import './ProductsListItem.scss'
 import Quantity from '../Quantity/Quantity'
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import {useAppSelector, useAppDispatch} from 'redux/hooks'
+import {removeLike, addLike} from 'redux/likeReducer'
 
 export type PropsProduct = {
     id?: number
@@ -14,6 +16,7 @@ export type PropsProduct = {
     price: number
     image: string
 }
+
 type ProductProps = {
     id:number
     name: string
@@ -25,7 +28,6 @@ type ProductProps = {
     category?: string
     addProductToCart:(id:number, count:number) => void
     changeProductLike:(id:number) => void
-    isLiked?:boolean
 }
 
 const ProductsListItem = ({ 
@@ -38,10 +40,11 @@ const ProductsListItem = ({
     price, 
     addProductToCart, 
     category,
-    isLiked = false,
-    changeProductLike,
 }: ProductProps) => {
     const [count, setCount] = useState<number>(1)
+
+    const isLiked = useAppSelector(state => state.productsLikeState[id])
+    const dispatch = useAppDispatch()
     const onIncrementClick = () => setCount((prevState:number)=>prevState +1)
     const onDecrementClick = () => setCount((prevState:number)=>prevState -1)
     
@@ -53,7 +56,11 @@ const ProductsListItem = ({
                 </div>
                 <Button 
                 variant="outlined"
-                onClick={()=>changeProductLike(id)} 
+                onClick={()=>
+                    isLiked 
+                    ? dispatch(removeLike(id))
+                    : dispatch(addLike(id))
+                } 
                 >
                 {isLiked ? <FavoriteIcon/>:<FavoriteBorderIcon/> || <FavoriteIcon /> }
                 </Button>

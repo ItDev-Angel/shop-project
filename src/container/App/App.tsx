@@ -36,7 +36,7 @@ const App = () => {
     const changeProductLike = (id:number) => {
         setProductsLikeState((prevState:ProductsLikeStateProps)=>({
             ...prevState,
-            [id]:(prevState[id] !== true)
+            [id]:!prevState[id] 
         })) 
     }
     
