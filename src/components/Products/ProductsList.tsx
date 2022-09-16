@@ -2,11 +2,6 @@ import { Grid, Typography } from '@mui/material'
 import ProductsListItem from './ProductsListItem'
 import productsArray from './productsArray'
 
-type Props = {
-    productsLikeState:{[id:number]:boolean}
-    addProductToCart:(id:number, count:number) => void
-    changeProductLike:(id:number) => void
-}
 type ProductProps = {
     id:number
     name: string
@@ -18,11 +13,8 @@ type ProductProps = {
     category?:string
     
 }
-const ProductsList = ({
-    addProductToCart, 
-    changeProductLike,
-}: Props) => {
-    return (
+const ProductsList = () => {
+return (
         <>
             <Typography variant="h4" textAlign="center" margin={3}>
                 <div>Product List</div>
@@ -55,8 +47,6 @@ const ProductsList = ({
                             type={type}
                             price={price}
                             image={image} 
-                            addProductToCart={addProductToCart} 
-                            changeProductLike={changeProductLike}
                     />
                 </Grid>
                 ))}

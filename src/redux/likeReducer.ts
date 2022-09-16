@@ -2,9 +2,7 @@ import {createSlice} from '@reduxjs/toolkit'
 type likeProductsState = {
   [id:number]:boolean
 }
-const initialState:likeProductsState = {
-  1:true,
-}
+const initialState:likeProductsState = {}
 export const likeSlice = createSlice({
   name: 'like',
   initialState,

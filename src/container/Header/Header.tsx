@@ -3,11 +3,10 @@ from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import Menu from 'components/Menu/Menu'
 import CardHeader from 'components/CardHeader/CardHeader'
-type Props = {
-    productsInCart:{[id:number]:number}
-}
 
-const Header = ({productsInCart}: Props) => {
+type Props = {}
+
+const Header = () => {
     return (
     <AppBar position="static" sx={{ backgroundColor:'blue'}}>
             <Container>
@@ -29,7 +28,7 @@ const Header = ({productsInCart}: Props) => {
                         Fake shop
                     </Typography>
                         <Menu />
-                        <CardHeader productsInCart={productsInCart}/>
+                        <CardHeader/>
                 </Toolbar>
             </Container>
         </AppBar>

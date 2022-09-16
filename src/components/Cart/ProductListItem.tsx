@@ -8,7 +8,7 @@ type Props = {
 const ProductListItem = ({productCount, product}: Props) => {
   return (
     <div>
-      {product.name} :{productCount}
+      {product.name} : {productCount}
     </div>
   )
 }

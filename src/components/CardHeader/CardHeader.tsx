@@ -1,23 +1,22 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import {keys} from 'lodash'
-import productsArray, {getProductsObject, Product} from 'components/Products/productsArray'
 import CartTotal from '../Cart/CartTotal'
 import CartProductList from '../Cart/CartProductList'
-type Props = {
-  productsInCart:{[id:number]:number}
-  productsObject?:{[id:number]:Product}
-}
+import {useAppSelector} from 'redux/hooks'
 
-const CardHeader = ({
-  productsInCart,
-  productsObject = getProductsObject(productsArray),
-}: Props) => {
+type Props = {}
 
+const CardHeader = () => {
+const productsInCart = useAppSelector(state => state.productsInCart)
   return (
-    <>
-    <CartProductList productsInCart={{}} />  
+    <div
+    style={{
+      display: 'flex',
+      flexDirection: 'column',
+      marginLeft: 20,
+    }}
+    >
+    <CartProductList productsInCart={productsInCart} />  
     <CartTotal productsInCart={productsInCart}/>
-    </>
+    </div>
   )
 }
 
