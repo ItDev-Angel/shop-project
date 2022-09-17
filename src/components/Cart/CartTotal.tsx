@@ -17,10 +17,10 @@ type Props = {
 
 const CartTotal = ({
   productsInCart,
-  productsObject = getProductsObject(productsArray),
+  // productsObject = getProductsObject(productsArray),
 }: Props) => {
-  //const productsArray = useAppSelector((state) => state.products)
-  //const productsObject:ProductsObject = getProductsObject(productsArray)
+  const productsArray = useAppSelector((state) => state.products)
+  const productsObject:ProductsObject = getProductsObject(productsArray)
 
   return (
     <div>

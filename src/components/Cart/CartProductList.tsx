@@ -17,12 +17,12 @@ type Props = {
 
 const CartProductList = ( {
   productsInCart,
-  productsObject = getProductsObject(productsArray),
+  // productsObject = getProductsObject(productsArray),
   CartItem = CartProductListItem,
 }: Props) => {
 
-  //const productsArray = useAppSelector((state) => state.products)
- // const productsObject:ProductsObject = getProductsObject(productsArray)
+  const productsArray = useAppSelector((state) => state.products)
+  const productsObject:ProductsObject = getProductsObject(productsArray)
 
   return (
     <>

@@ -13,7 +13,7 @@ type ProductProps = {
     image:string
 }
 const ProductsList = () => {
-    //const productsArray = useAppSelector(state => state.products)
+    const productsArray = useAppSelector(state => state.products)
 
     return (
         <>
