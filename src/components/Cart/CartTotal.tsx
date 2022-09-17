@@ -9,13 +9,18 @@ type ProductsObject = {
 type Props = {
   productsInCart:{
     [id:number]:number
-  },
-  productsObject?:{[id:number]:Product}
+  }
+  productsObject?:{
+    [id:number]:Product
+  }
 }
 
-const CartTotal = ({productsInCart,productsObject = getProductsObject(productsArray),}: Props) => {
-  // const productsArray = useAppSelector((state) => state.products)
-  // const productsObject:ProductsObject = getProductsObject(productsArray)
+const CartTotal = ({
+  productsInCart,
+  productsObject = getProductsObject(productsArray),
+}: Props) => {
+  //const productsArray = useAppSelector((state) => state.products)
+  //const productsObject:ProductsObject = getProductsObject(productsArray)
 
   return (
     <div>

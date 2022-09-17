@@ -21,8 +21,8 @@ const CartProductList = ( {
   CartItem = CartProductListItem,
 }: Props) => {
 
-  // const productsArray = useAppSelector((state) => state.products)
-  // const productsObject:ProductsObject = getProductsObject(productsArray)
+  //const productsArray = useAppSelector((state) => state.products)
+ // const productsObject:ProductsObject = getProductsObject(productsArray)
 
   return (
     <>
