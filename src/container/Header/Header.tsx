@@ -4,8 +4,6 @@ import MenuIcon from '@mui/icons-material/Menu'
 import Menu from 'components/Menu/Menu'
 import CardHeader from 'components/CardHeader/CardHeader'
 
-type Props = {}
-
 const Header = () => {
     return (
     <AppBar position="static" sx={{ backgroundColor:'blue'}}>

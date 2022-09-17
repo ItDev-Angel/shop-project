@@ -6,9 +6,10 @@ import Reviews from 'components/Reviews/Reviews'
 import ProductPage from 'pages/ProductPage/ProductPage'
 import CheckoutPage from 'pages/CheckoutPage/CheckoutPage'
 
-type Props = {}
+
 
 const Main = () => {
+
   return (
     <> 
     <Container>

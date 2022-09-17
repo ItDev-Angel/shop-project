@@ -4,10 +4,10 @@ import likeReducer from './likeReducer'
 import productsReducer from './productsReducer'
 
 export const store = configureStore  ({
-  reducer:{
+  reducer: {
     productsLikeState:likeReducer,
     productsInCart:cartReducer,
-    products: productsReducer
+    
   }
 })
 

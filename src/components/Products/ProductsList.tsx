@@ -1,5 +1,6 @@
 import { Grid, Typography } from '@mui/material'
 import ProductsListItem from './ProductsListItem'
+import { useAppSelector } from 'redux/hooks'
 import productsArray from './productsArray'
 
 type ProductProps = {
@@ -10,11 +11,11 @@ type ProductProps = {
     capacity: number
     price:number
     image:string
-    category?:string
-    
 }
 const ProductsList = () => {
-return (
+    // const productsArray = useAppSelector(state => state.products)
+
+    return (
         <>
             <Typography variant="h4" textAlign="center" margin={3}>
                 <div>Product List</div>
@@ -26,9 +27,7 @@ return (
                 alignItems="center"
                 spacing={3}
             >
-                {productsArray.filter(
-                ({category}:ProductProps) => category === 'Iphone')
-                .map(
+                {productsArray.map(
                 ({
                     id,
                     name,
@@ -37,7 +36,7 @@ return (
                     capacity,
                     price,
                     image,
-                }:ProductProps) =>(
+                }:ProductProps) => (
                 <Grid item xs={12} sm={6} md={4} key={id}>
                     <ProductsListItem
                             id={id}

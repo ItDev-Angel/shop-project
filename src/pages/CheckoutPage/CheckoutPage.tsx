@@ -28,10 +28,10 @@ const CheckoutPage = (props: Props) => {
     e.preventDefault()
     axios
     .post('https://my-json-server.typicode.com/kznkv-skillup/server/orders',{
-      name:orderData.name,
+      name: orderData.name,
       address: orderData.address,
     })
-    .then(res => res.data)
+    .then((res) => res.data)
     .then(({name, address}) => 
       setOrderData({name, address}))
       setIsOrderSend(true)

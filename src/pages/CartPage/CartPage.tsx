@@ -5,8 +5,6 @@ import {useAppSelector} from 'redux/hooks'
 import { Link } from 'react-router-dom'
 import CartProductListItemExtended from 'components/Cart/CartProductListItemExtended'
 
-type Props = {}
-
 const CartPage = () => {
   const productsInCart = useAppSelector(state => state.productsInCart)
   return (
